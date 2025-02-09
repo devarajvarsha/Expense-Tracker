@@ -1,0 +1,256 @@
+:root {
+  --bg-color: #f6f8fa;
+  --text-color: #2d2d4a;
+  --main-color: #3a3dbe;
+  --highlight-color: #ff7043;
+  --gradient-start: #3a3dbe;
+  --gradient-end: #ff7043;
+  --window-gradient-start: #2a2d6e; /* Darker blue for window */
+  --window-gradient-end: #cc4f2c; /* Darker orange for window */
+  --name-color: #ffd4c2; /* Peachy text */
+  --amount-color: #e8e4ff; /* Light purple */
+  --active-color: #ffeaa7; /* Warm yellow */
+  --income-color: #b8f5d4; /* Mint green */
+  --expense-color: #ffb3b3; /* Soft red */
+  --header-glow: 0 0 15px rgba(255, 255, 255, 0.3); /* Glow effect */
+  --text-glow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  width: 90%;
+  max-width: 420px;
+  margin: 20px;
+  background: linear-gradient(135deg, var(--window-gradient-start), var(--window-gradient-end));
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+main:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+header {
+  background: linear-gradient(135deg, rgba(58, 61, 190, 0.3), rgba(255, 112, 67, 0.3));
+  backdrop-filter: blur(5px);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header div {
+  font-size: 1rem;
+}
+
+header h5 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffd4c2;
+  text-shadow: var(--header-glow);
+}
+
+header span {
+  color: #fff;
+  text-shadow: var(--text-glow);
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+form input:not(#type),
+form button,
+form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(42, 45, 110, 0.3);
+  color: #fff;
+  border-radius: 5px;
+  height: 42px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
+form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+form button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-shadow: var(--text-glow);
+}
+
+form button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+  transform: translateY(-2px);
+}
+
+form label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffd4c2;
+  text-shadow: var(--text-glow);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(42, 45, 110, 0.4), rgba(204, 79, 44, 0.4));
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.25s;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.option[data-option="Income"]:not(:checked) {
+  background: linear-gradient(135deg, rgba(184, 245, 212, 0.2), rgba(42, 45, 110, 0.2));
+}
+
+.option[data-option="Expense"]:checked {
+  background: linear-gradient(135deg, rgba(255, 179, 179, 0.2), rgba(204, 79, 44, 0.2));
+}
+
+ul {
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+  height: 200px;
+  overflow-y: auto;
+}
+
+ul:empty {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-block: 5px;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(42, 45, 110, 0.4), rgba(204, 79, 44, 0.4));
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+ul li:hover {
+  background: linear-gradient(135deg, rgba(42, 45, 110, 0.6), rgba(204, 79, 44, 0.6));
+  transform: translateX(5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.name {
+  flex: 1;
+  color: var(--name-color);
+}
+
+.name h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: color 0.3s ease;
+  text-shadow: var(--text-glow);
+}
+
+.name p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.amount {
+  font-weight: 600;
+  color: var(--amount-color);
+  transition: color 0.3s ease;
+  text-shadow: var(--text-glow);
+}
+
+.amount.income {
+  color: var(--income-color);
+  text-shadow: 0 0 10px rgba(184, 245, 212, 0.3);
+}
+
+.amount.expense {
+  color: var(--expense-color);
+  text-shadow: 0 0 10px rgba(255, 179, 179, 0.3);
+}
+
+h3 {
+  color: #ffd4c2;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-shadow: var(--header-glow);
+  letter-spacing: 1px;
+}
+
+/* Custom scrollbar */
+ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: rgba(42, 45, 110, 0.3);
+  border-radius: 4px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  form div {
+    grid-column: span 1;
+  }
+}
