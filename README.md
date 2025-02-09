@@ -12,7 +12,7 @@ An intuitive and responsive expense tracking application built with HTML, CSS, a
 
 ## Demo
 
-You can try the demo of this application by [link to demo if available].
+You can try the demo of this application by https://devarajvarsha.github.io/Expense-Tracker/.
 
 ## Technologies Used
 
